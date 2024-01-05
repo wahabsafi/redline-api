@@ -148,5 +148,6 @@ APP_DOMAIN = env("APP_DOMAIN", default="http://localhost:8000")
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+from config.settings.rest_framework import *  # noqa
 
 # from config.settings.jwt import *  # noqa
