@@ -30,7 +30,9 @@ ALLOWED_HOSTS = env.list("ALLOWED_HOSTS", default=["*"])
 
 
 # Application definition
-LOCAL_APPS=[]
+LOCAL_APPS=[
+    'redline.users.apps.UsersConfig',
+]
 THIRD_PARTY_APPS=[]
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -116,7 +118,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
+AUTH_USER_MODEL = "users.BaseUser"
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
@@ -140,4 +142,4 @@ APP_DOMAIN = env("APP_DOMAIN", default="http://localhost:8000")
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-from config.settings.jwt import *  # noqa
+# from config.settings.jwt import *  # noqa
