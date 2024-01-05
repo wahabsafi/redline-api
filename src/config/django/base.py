@@ -33,6 +33,7 @@ ALLOWED_HOSTS = env.list("ALLOWED_HOSTS", default=["*"])
 LOCAL_APPS=[
     'redline.users.apps.UsersConfig',
     'redline.common.apps.CommonConfig',
+    'redline.core.apps.CoreConfig',
 ]
 THIRD_PARTY_APPS=[]
 INSTALLED_APPS = [
