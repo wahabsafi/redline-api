@@ -36,7 +36,10 @@ LOCAL_APPS=[
     'redline.core.apps.CoreConfig',
     'redline.api.apps.ApiConfig',
 ]
-THIRD_PARTY_APPS=[]
+THIRD_PARTY_APPS=[
+    'rest_framework',
+    
+]
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
