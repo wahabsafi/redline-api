@@ -38,7 +38,8 @@ LOCAL_APPS=[
 ]
 THIRD_PARTY_APPS=[
     'rest_framework',
-    'drf_spectacular'
+    'drf_spectacular',
+    'rest_framework_simplejwt'
 ]
 INSTALLED_APPS = [
     'django.contrib.admin',
