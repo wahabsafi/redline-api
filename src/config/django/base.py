@@ -34,6 +34,7 @@ LOCAL_APPS=[
     'redline.users.apps.UsersConfig',
     'redline.common.apps.CommonConfig',
     'redline.core.apps.CoreConfig',
+    'redline.api.apps.ApiConfig',
 ]
 THIRD_PARTY_APPS=[]
 INSTALLED_APPS = [
