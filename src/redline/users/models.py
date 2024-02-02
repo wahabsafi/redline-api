@@ -10,10 +10,10 @@ from django.contrib.auth.models import PermissionsMixin
 class BaseUserManager(BUM):
     def create_user(
         self,
-        first_name,
-        last_name,
         email,
-        phone_number,
+        first_name='',
+        last_name='',
+        phone_number=None,
         is_active=True,
         is_admin=False,
         password=None,
@@ -27,7 +27,7 @@ class BaseUserManager(BUM):
             is_admin=is_admin,
             first_name=first_name,
             last_name=last_name,
-            phone_numbe=phone_number,
+            phone_number=phone_number,
         )
 
         if password is not None:
@@ -40,14 +40,12 @@ class BaseUserManager(BUM):
 
         return user
 
-    def create_superuser(self, email, first_name, last_name, password=None):
+    def create_superuser(self, email, password=None):
         user = self.create_user(
             email=email,
             is_active=True,
             is_admin=True,
             password=password,
-            first_name=first_name,
-            last_name=last_name,
         )
 
         user.is_superuser = True
@@ -60,7 +58,7 @@ class BaseUser(BaseModel, AbstractBaseUser, PermissionsMixin):
     first_name = models.CharField(_("First Name"), max_length=50, blank=True)
     last_name = models.CharField(_("Last Name"), max_length=50, blank=True)
     email = models.EmailField(verbose_name=_("Email Address"), unique=True)
-    username=models.CharField(_("Username"),max_length=255,unique=True)
+    username=models.CharField(_("Username"),max_length=255,unique=True,blank=True)
     phone_number=models.CharField(_("Phone Number"),max_length=12,blank=True,null=True)
     otp=models.CharField(max_length=6,blank=True,null=True)
 
@@ -72,7 +70,7 @@ class BaseUser(BaseModel, AbstractBaseUser, PermissionsMixin):
     objects = BaseUserManager()
 
     USERNAME_FIELD = "email"
-    REQUIRED_FIELDS=['username']
+    REQUIRED_FIELDS=[]
 
     def __str__(self):
         return self.email
