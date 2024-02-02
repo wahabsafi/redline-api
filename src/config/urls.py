@@ -19,6 +19,6 @@ from django.urls import path,include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include(('blogapi.api.urls', 'api'))),
+    path('api/', include(('redline.api.urls', 'api'))),
     
 ]
