@@ -1,18 +1,18 @@
-from django.db import models
-from redline.common.models import BaseModel
-
-from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.models import AbstractBaseUser
 from django.contrib.auth.models import BaseUserManager as BUM
 from django.contrib.auth.models import PermissionsMixin
+from django.db import models
+from django.utils.translation import gettext_lazy as _
+
+from redline.common.models import BaseModel
 
 
 class BaseUserManager(BUM):
     def create_user(
         self,
         email,
-        first_name='',
-        last_name='',
+        first_name="",
+        last_name="",
         phone_number=None,
         is_active=True,
         is_admin=False,
@@ -58,10 +58,11 @@ class BaseUser(BaseModel, AbstractBaseUser, PermissionsMixin):
     first_name = models.CharField(_("First Name"), max_length=50, blank=True)
     last_name = models.CharField(_("Last Name"), max_length=50, blank=True)
     email = models.EmailField(verbose_name=_("Email Address"), unique=True)
-    username=models.CharField(_("Username"),max_length=255,unique=True,blank=True)
-    phone_number=models.CharField(_("Phone Number"),max_length=12,blank=True,null=True)
-    otp=models.CharField(max_length=6,blank=True,null=True)
-
+    username = models.CharField(_("Username"), max_length=255, unique=True, blank=True)
+    phone_number = models.CharField(
+        _("Phone Number"), max_length=12, blank=True, null=True
+    )
+    otp = models.CharField(max_length=6, blank=True, null=True)
 
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
@@ -70,7 +71,7 @@ class BaseUser(BaseModel, AbstractBaseUser, PermissionsMixin):
     objects = BaseUserManager()
 
     USERNAME_FIELD = "email"
-    REQUIRED_FIELDS=[]
+    REQUIRED_FIELDS = []
 
     def __str__(self):
         return self.email
