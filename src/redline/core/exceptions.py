@@ -13,8 +13,9 @@ class ResponseException:
     """
     This class aim to remove unnecessary deatil of exception messages and provide proper message
     """
+
     def __init__(self, exception: Exception) -> None:
-        
+
         self.exception = exception
 
     def __str__(self) -> str:

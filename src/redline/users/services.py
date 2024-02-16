@@ -25,7 +25,7 @@ def create_user(user_input: UserRegisterInput) -> User:
 
     user = User.objects.create(**asdict(user_input))
     if user_input.password is not None:
-            user.set_password(user_input.password)
+        user.set_password(user_input.password)
     else:
         user.set_unusable_password()
 

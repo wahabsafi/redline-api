@@ -15,5 +15,3 @@ class BaseModel(models.Model):
             setattr(self, key, value)
         if commit:
             self.save()
-
-
