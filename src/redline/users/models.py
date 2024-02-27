@@ -65,9 +65,7 @@ class BaseUser(BaseModel, AbstractBaseUser, PermissionsMixin):
     otp = models.CharField(max_length=6, blank=True, null=True)
 
     is_active = models.BooleanField(default=True)
-    is_admin = models.BooleanField(default=False)
-    is_author = models.BooleanField(default=False)
-
+    role = models.OneToOneField("Role", null=True, on_delete=models.SET_NULL)
     objects = BaseUserManager()
 
     USERNAME_FIELD = "email"
@@ -87,11 +85,15 @@ class BaseUser(BaseModel, AbstractBaseUser, PermissionsMixin):
             return full_name.strip()
 
 
+class Role(models.Model):
+    name = models.CharField(max_length=250, unique=True)
+    description = models.CharField(max_length=1000)
+
+
 class Profile(models.Model):
     user = models.OneToOneField(BaseUser, on_delete=models.CASCADE)
     posts_count = models.PositiveIntegerField(default=0)
     subscriber_count = models.PositiveIntegerField(default=0)
-    subscription_count = models.PositiveIntegerField(default=0)
     bio = models.CharField(max_length=1000, null=True, blank=True)
 
     def __str__(self):
